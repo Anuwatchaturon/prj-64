@@ -1,0 +1,296 @@
+
+
+<ion-content class={{this.bg}}>
+
+    <img src="assets/imgs/04mod1.png">
+    <ion-card align="center" color={{this.ban}} >
+
+  <ion-slides  > 
+    <ion-slide  >
+       <img src="assets/imgs/bannerx.png" />
+              <ion-grid>
+                
+                  <ion-row>
+                    <ion-col>
+                      <ion-row >
+                        <ion-col class="ion-align-items-start">
+                          <p>
+                            <ion-label  >Temperature</ion-label>   
+                          </p>
+                        </ion-col>
+                        <ion-col>
+                         <p> 
+                          <ion-label  >{{this.ctemp}} C</ion-label>   
+                   
+                         <ion-label  >{{this.ftemp}} F</ion-label>   
+                          </p>
+                        </ion-col>
+                      </ion-row>
+                    </ion-col>
+                  </ion-row>
+            
+                <ion-row>
+                  <ion-col>
+                    <p>
+                      <ion-label  >Water Level</ion-label>   
+                    </p>
+                  </ion-col>
+                  <ion-col>
+                    <p>
+                      <ion-label  >{{this.level}}</ion-label>                    
+                    </p>
+                  </ion-col>
+                </ion-row>
+    
+                <ion-row>
+                  <ion-col>
+                    <p>
+                      <ion-label  >Water Quality</ion-label>            
+                    </p>
+                  </ion-col>
+                  <ion-col>
+                    <p>
+                      <ion-label  >{{this.quality}}</ion-label>
+                    </p>
+                  </ion-col>
+                </ion-row>
+          
+                <ion-row>
+                  <ion-col>
+                    <p>
+                      <ion-label  >Pump Status</ion-label>
+                    </p>
+                  </ion-col>
+                  <ion-col>
+                    <p>
+                      <ion-label  > {{this.pump}}  </ion-label>
+                    </p>
+                  </ion-col>
+                </ion-row>
+                
+                <ion-row>
+                  <ion-col>
+                    <p>
+                      <ion-label  > Last Feed </ion-label>
+                    </p>
+                  </ion-col>
+                  <ion-col>
+                    <p>
+                      <ion-label  > {{this.feed}} </ion-label>
+                    </p>
+                  </ion-col>
+                </ion-row>
+    
+                <ion-row>
+                  <ion-col>
+                    <p>
+                    <ion-label  >Light </ion-label>
+                    </p>
+                  </ion-col>
+                  <ion-col >
+                    <p>
+                      <ion-label  >{{this.light_task}} </ion-label>
+                    </p>
+                  </ion-col>
+                </ion-row>
+
+                <ion-row>
+                  <ion-col>
+                    <p>
+                    <ion-label  >Timer Feed </ion-label>
+                    </p>
+                  </ion-col>
+                  <ion-col >
+                    <p>
+                      <ion-label  >{{this.auto_status}} </ion-label>
+                    </p>
+                  </ion-col>
+                </ion-row>
+        
+              </ion-grid>
+
+    </ion-slide>
+
+
+    <ion-slide>
+      <img src="assets/imgs/bannery.png" />
+
+
+      <ion-row>
+        <ion-col>
+          <p>
+            <ion-label  >Last Feed </ion-label>
+         </p>
+        </ion-col>
+        <ion-col class="ion-align-self-center">
+         </ion-col>
+        <ion-col>
+          <p>
+            <ion-label  > {{this.feed}} </ion-label>
+          </p>
+        </ion-col>
+        </ion-row>
+      <ion-row > </ion-row>
+
+      <button ion-button color="danger"  (click)="feed_active()"  expand="block" clear>Feed</button>
+
+    <ion-row>
+      <ion-col>
+        <button ion-button color="{{this.btn1}}" (click)="onoff1()"  expand="block" style="width:75%;" >
+          <ion-label color={{this.fontbtn}} >ON</ion-label></button>
+      </ion-col>
+      <ion-col>
+        <button ion-button color="{{this.btn2}}"   (click)="onoff2()"expand="block" style="width:75%;" >
+          <ion-label color={{this.fontbtn}} >OFF</ion-label></button>
+      </ion-col>
+    </ion-row>
+
+  <ion-row class="bg1" >
+<ion-col>
+  <p>
+  <ion-label >Timer</ion-label>
+  </p>
+</ion-col>
+<ion-col>
+  <p>
+    <ion-datetime displayFormat="HH:mm" pickerFormat="HH mm" [(ngModel)]="getdate" disabled="{{this.timepick}}" ></ion-datetime>
+
+  </p>
+      </ion-col>
+    </ion-row>
+
+
+
+
+
+    <img src="assets/imgs/bannerz.png" />
+
+
+        <ion-row >
+            <ion-col >
+                 <p>
+                    <ion-label >Theme Mode</ion-label>
+              </p>
+            </ion-col>
+            <ion-col class="ion-align-self-center">
+            </ion-col>
+            <ion-col >
+              <button ion-button expand="block" style="width:50%;" clear >
+                <img src= "{{this.icontheme}}"  (click)="this.themechange()" style="width:100% " >
+              </button>
+                 
+            </ion-col>
+          </ion-row>
+     
+
+          <ion-row >
+            <ion-col >
+                 <p>
+                    <ion-label >Quality</ion-label>
+              </p>
+            </ion-col>
+            <ion-col >
+              <p>
+                 <ion-label (click)="sendquacheck2()" color="danger">Check</ion-label>
+           </p>
+         </ion-col>
+          </ion-row>
+      
+
+        <p>
+          <ion-label >Light</ion-label>
+        </p>
+         <div padding>
+          <ion-segment [(ngModel)]="this.w_light" color="{{this.font}}"> 
+            <ion-segment-button value="false" (click)="pushlightoff()" >
+               OFF
+            </ion-segment-button>
+            <ion-segment-button value="checked" (click)="pushlighton()">
+               ON
+            </ion-segment-button>
+          </ion-segment>
+        </div>
+        
+        <div [ngSwitch]="this.w_light">
+          
+          <ion-list *ngSwitchCase="'checked'">
+ 
+              <ion-row>
+                <ion-col >
+                  <ion-label  > Color</ion-label>
+                </ion-col>
+                <ion-col >
+                </ion-col>
+                <ion-col > 
+       
+                  <input  type="color"  [(ngModel)]="this.color_set" 
+                  style="width:100%; height: 100%; cursor: pointer; 
+                  appearance: none;
+                  border: none; background-color: transparent;" disabled="true">
+         
+              </ion-col>
+              </ion-row>
+             <ion-grid> 
+               <ion-row>
+                 <ion-col style="background:#ff0000" (click)="this.color18()">&nbsp;</ion-col>
+                 <ion-col style="background:#f9350f" (click)="this.color17()">&nbsp;</ion-col>
+                 <ion-col style="background:#fa710f" (click)="this.color16()">&nbsp;</ion-col>
+                 <ion-col style="background:#faac0f" (click)="this.color15()">&nbsp;</ion-col>
+                 <ion-col style="background:#fad30f" (click)="this.color14()">&nbsp;</ion-col>
+                 <ion-col style="background:#fafa0f" (click)="this.color13()">&nbsp;</ion-col>
+               </ion-row>
+             <ion-row>
+               <ion-col style="background:#0f84fa" (click)="this.color12()">&nbsp;</ion-col>
+               <ion-col style="background:#0fb0fa" (click)="this.color11()">&nbsp;</ion-col>
+               <ion-col style="background:#0ffad3" (click)="this.color10()">&nbsp;</ion-col>
+               <ion-col style="background:#0ffa84" (click)="this.color9()">&nbsp;</ion-col>
+               <ion-col style="background:#0ffa36" (click)="this.color8()">&nbsp;</ion-col>
+               <ion-col style="background:#84fa0f" (click)="this.color7()">&nbsp;</ion-col>
+             </ion-row>
+             <ion-row>
+               <ion-col style="background:#0f36fa" (click)="this.color6()">&nbsp;</ion-col>
+               <ion-col style="background:#710ffa" (click)="this.color5()">&nbsp;</ion-col>
+               <ion-col style="background:#bf0ffa" (click)="this.color4()">&nbsp;</ion-col>
+               <ion-col style="background:#fa0fc6" (click)="this.color3()">&nbsp;</ion-col>
+               <ion-col style="background:#fa0f84" (click)="this.color2()">&nbsp;</ion-col>
+               <ion-col style="background:#ffffff" (click)="this.color1()">&nbsp;</ion-col>
+             </ion-row>
+             </ion-grid>
+         
+              <ion-range min="0" max="255" pin color="danger" [(ngModel)]="r_light" (ngModelChange)="r_color($event)" >
+                <ion-icon slot="start"  name="color-fill-outline" color="danger"></ion-icon>
+              </ion-range>
+          
+              <ion-range min="0" max="255" pin color="secondary" [(ngModel)]="g_light" (ngModelChange)="g_color($event)">
+                <ion-icon slot="start"  name="color-fill-outline" color="success"></ion-icon>
+              </ion-range>
+          
+              <ion-range min="0" max="255" pin color="success" [(ngModel)]="b_light" (ngModelChange)="b_color($event)">
+                <ion-icon slot="start"  name="color-fill-outline" color="secondary"></ion-icon>
+              </ion-range>
+   
+
+                <p>
+                  <button ion-button color="danger"  (click)="this.custom_color()"  expand="block" clear>Apply</button>
+                </p>
+              
+     
+
+            </ion-list>
+        
+          <ion-list *ngSwitchCase="'false'">
+    
+          </ion-list>
+        </div>
+
+
+
+
+
+    </ion-slide>
+
+
+  </ion-slides>
+                
+</ion-card>
+</ion-content>
